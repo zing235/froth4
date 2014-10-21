@@ -89,7 +89,6 @@ void AuCamera::updateaucamera(void)
 
 void AuCamera::paint(QPainter *painter)
 {
-
     painter->drawImage(boundingRect().adjusted(1, 1, -1, -1),aucameraframe);
 }
 

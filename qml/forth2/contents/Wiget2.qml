@@ -49,7 +49,7 @@ import SbCamera 1.0
 //                       renderTarget: FramebufferObject
                         Timer{
                             id: exaucameratimer
-                            interval: 100
+                            interval: 1
                             repeat: true
                             onTriggered: {
                                 exautime.text = Date().toString()
@@ -147,7 +147,7 @@ import SbCamera 1.0
 //                       renderTarget: FramebufferObject
                         Timer{
                             id: exsbameratimer
-                            interval: 100
+                            interval: 1
                             repeat: true
                             onTriggered: {
                                 exsbtime.text = Date().toString()
@@ -194,11 +194,12 @@ import SbCamera 1.0
                         }
                     }
 
-                            }
                 }
 
-            Rectangle {
+                Rectangle {
                     id: rectangle5
+                    x: 32
+                    y: -395
                     height: rectangle1.height/30
                     color: "#ffffff"
                     radius: 8
@@ -217,6 +218,7 @@ import SbCamera 1.0
                         font.pixelSize: 16
                     }
             }
+                }
         }
 
 

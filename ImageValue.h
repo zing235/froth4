@@ -2,6 +2,7 @@
 #define IMAGEVALUE_H
 #include <QObject>
 #include <opencv2/opencv.hpp>
+#pragma execution_character_set("utf-8")
 class ImageValue : public QObject
 {
     Q_OBJECT

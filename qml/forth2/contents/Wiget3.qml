@@ -17,10 +17,10 @@ Rectangle
             anchors.fill: parent
             id: aucamera
 
-//                        renderTarget: FramebufferObject
+
             Timer{
                 id: aucameratimer
-                interval: 100
+                interval: 1
                 repeat: true
                 onTriggered: {
                     autime.text = Date().toString()
@@ -30,11 +30,25 @@ Rectangle
             }
             Timer{
                 id: auvaluetimer
-                interval: 180000;
+                interval: 60000;
                 repeat: true
                 onTriggered: {
                     imagevalue.getAuImageValue();
                     getpinwei();
+                }
+                function  getpinwei()///???/
+                {
+                    switch (imagevalue.SbGrade)
+                    {
+                    case 0 : pinwei2.text ="极高";
+                    break;
+                    case 1 : pinwei2.text ="较高";
+                    break;
+                    case 2 : pinwei2.text ="高";
+                    break;
+                    default: pinwei2.text ="默认";
+                    break;
+                    }
                 }
             }
             Timer{
@@ -126,21 +140,7 @@ Rectangle
                 color: "#00FF00"
 
             }
-//           function  getpinwei()///???/
-//           {
-//               switch (imagevalue.SbGrade)
-//               {
-//               case 0 : pinwei2.text ="极高";
-//               break;
-//               case 1 : pinwei2.text ="较高";
-//               break;
-//               case 2 : pinwei2.text ="高";
-//               break;
-//               default: pinwei2.text ="默认";
-//               break;
-//               }
 
-//           }
         }
         Rectangle{
             width: parent.width/2+7

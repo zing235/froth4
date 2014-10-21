@@ -16,10 +16,17 @@ static bool sqlconnect(const QString &dbname)
       db = QSqlDatabase::database("qt_sql_default_connection");
     else
       db = QSqlDatabase::addDatabase("QODBC");
-    QString dsn ="DRIVER={SQL SERVER};SERVER=10.2.18.135;DATABASE=";
+
+//    QString dsn ="DRIVER={SQL SERVER};SERVER=10.2.18.135;DATABASE=";
+//    db.setDatabaseName(dsn+dbname);
+//    db.setUserName("sa");
+//    db.setPassword("1226");
+
+    QString dsn ="DRIVER={SQL SERVER};SERVER=bubble-PC;DATABASE=";
     db.setDatabaseName(dsn+dbname);
     db.setUserName("sa");
-    db.setPassword("1226");
+    db.setPassword("xks137");
+
     if(!db.open())
        {
         qDebug()<< "error="<<db.lastError().text();

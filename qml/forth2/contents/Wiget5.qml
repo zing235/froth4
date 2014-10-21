@@ -20,7 +20,7 @@ Rectangle
 //                        renderTarget: FramebufferObject
             Timer{
                 id: sbcameratimer
-                interval: 100
+                interval: 1
                 repeat: true
                 onTriggered: {
                     sbtime.text = Date().toString()
@@ -30,7 +30,7 @@ Rectangle
             }
             Timer{
                 id: sbvaluetimer
-                interval: 190000;
+                interval: 70000;
                 repeat: true
                 onTriggered: {
                     imagevalue.getSbImageValue();

@@ -6,6 +6,7 @@
 #include <QtQml>
 #include <QtQuick/QQuickView>
 #include "yaoji.h"
+#pragma execution_character_set("utf-8")
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);

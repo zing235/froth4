@@ -1,22 +1,36 @@
-INCLUDEPATH+="D:/Program Files/mingopencv/include"
-INCLUDEPATH+="d:/Program Files/UniversalPackage/UniAPI/include"
+INCLUDEPATH+="d:/Program Files/Allied Vision Technologies/UniversalPackage/UniAPI/include"
+LIBS+="d:/Program Files/Allied Vision Technologies/UniversalPackage/UniAPI/lib/Secure/UniControl.lib"
+LIBS+="d:/Program Files/Allied Vision Technologies/UniversalPackage/UniAPI/lib/Secure/UniTransform.lib"
+
+INCLUDEPATH += "D:/Program Files/opencv/build/include"
 
 
-LIBS+="D:/Program Files/mingopencv/lib/libopencv_calib3d249.dll.a"
-LIBS+="D:/Program Files/mingopencv/lib/libopencv_contrib249.dll.a"
-LIBS+="D:/Program Files/mingopencv/lib/libopencv_core249.dll.a"
-LIBS+="D:/Program Files/mingopencv/lib/libopencv_features2d249.dll.a"
-LIBS+="D:/Program Files/mingopencv/lib/libopencv_flann249.dll.a"
-LIBS+="D:/Program Files/mingopencv/lib/libopencv_gpu249.dll.a"
-LIBS+="D:/Program Files/mingopencv/lib/libopencv_highgui249.dll.a"
-LIBS+="D:/Program Files/mingopencv/lib/libopencv_imgproc249.dll.a"
-LIBS+="D:/Program Files/mingopencv/lib/libopencv_legacy249.dll.a"
-LIBS+="D:/Program Files/mingopencv/lib/libopencv_ml249.dll.a"
-LIBS+="D:/Program Files/mingopencv/lib/libopencv_objdetect249.dll.a"
-LIBS+="D:/Program Files/mingopencv/lib/libopencv_video249.dll.a"
+win32:CONFIG(debug, debug|release): {
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_core249d.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_imgproc249d.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_highgui249d.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_ml249d.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_video249d.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_features2d249d.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_calib3d249d.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_objdetect249d.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_contrib249d.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_legacy249d.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_flann249d.lib"
 
-LIBS+="d:/Program Files/UniversalPackage/UniAPI/lib/Secure/UniControl.lib"
-LIBS+="d:/Program Files/UniversalPackage/UniAPI/lib/Secure/UniTransform.lib"
+} else:win32:CONFIG(release, debug|release): {
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_core249.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_imgproc249.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_highgui249.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_ml249.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_video249.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_features2d249.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_calib3d249.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_objdetect249.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_contrib249.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_legacy249.lib"
+LIBS += "D:/Program Files/opencv/build/x86/vc10/lib/opencv_flann249.lib"
+}
 # Add more folders to ship with the application, here
 folder_01.source = qml/forth2
 folder_01.target = qml

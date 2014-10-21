@@ -1,9 +1,9 @@
 #include "ImageValue.h"
 #include <opencv2/opencv.hpp>
-#include<Histogram.h>
-#include<WaterShedAlgorithm.h>
-#include<WatershedPixel.h>
-#include<WatershedStructure.h>
+#include"Histogram.h"
+#include"WaterShedAlgorithm.h"
+#include"WatershedPixel.h"
+#include"WatershedStructure.h"
 #include <QUrl>
 #include <QImage>
 #include"AuCamera.h"
@@ -12,7 +12,7 @@
 #include "UniControl.h"
 #include "UniTransform.h"
 #define UINT8P_CAST(x) reinterpret_cast<UINT8*>(x)
-
+#pragma execution_character_set("utf-8")
 
 double sbGlobleBubbleNumber=0;
 double sbGlobleBubbleSize=0;
@@ -137,8 +137,8 @@ return mat2;
 
 void ImageValue::getSbImageValue(void)
 {
-    Histogram h;//åˆ›å»ºå›¾åƒå¢žå¼ºç®—æ³•å®žä¾‹;
-    WatershedAlgorithm myWatershed;	// åˆ›å»ºåˆ†æ°´å²­ç®—æ³•å®žä¾‹;
+    Histogram h;//´´½¨Í¼ÏñÔöÇ¿Ëã·¨ÊµÀý;
+    WatershedAlgorithm myWatershed;	// ´´½¨·ÖË®ÁëËã·¨ÊµÀý;
     SbCamera sbcamerazz;
     int nr=sbcamerazz.getsbimageheight();
     int nc=sbcamerazz.getsbimagewidth();
@@ -181,7 +181,7 @@ void ImageValue::getSbImageValue(void)
 
     sbWSS=myWatershed.run(sbopencvimage_not);//return WSS as the result of watershed;
    // imshow("wtershed result1",WSS);
-//    imshow("wtershed result2",WSS+opencvimage_gray);//æ˜¾ç¤ºåˆ†å‰²æ•ˆæžœ
+//    imshow("wtershed result2",WSS+opencvimage_gray);//ÏÔÊ¾·Ö¸îÐ§¹û
 
 
 
@@ -235,7 +235,7 @@ void ImageValue::updatesqlyaoji()
         qry.bindValue(":v3",QString::number(sbGlobleGrayMean));
 
         //2> select the current guize by graymean value
-        QString selectguize="select * FROM [frothzz].[dbo].[ä¸“å®¶è§„åˆ™] where ç°åº¦å‡å€¼=(SELECT Min(Abs(ç°åº¦å‡å€¼-"+QString::number(sbGlobleGrayMean)+"))+"+QString::number(sbGlobleGrayMean)+" FROM [frothzz].[dbo].[ä¸“å®¶è§„åˆ™])";
+        QString selectguize="select * FROM [frothzz].[dbo].[×¨¼Ò¹æÔò] where »Ò¶È¾ùÖµ=(SELECT Min(Abs(»Ò¶È¾ùÖµ-"+QString::number(sbGlobleGrayMean)+"))+"+QString::number(sbGlobleGrayMean)+" FROM [frothzz].[dbo].[×¨¼Ò¹æÔò])";
         qry.exec(selectguize);
         qry.next();
         sbGlobleSbGrade=qry.value(0).toInt();
@@ -244,18 +244,18 @@ void ImageValue::updatesqlyaoji()
         //3> choose the zhidaoyaoji from current guize
         QList<int> current_ZhidaoYaoji;
         current_ZhidaoYaoji<<0<<0<<0<<0<<0<<0<<0<<0<<0<<0<<0<<0<<0<<0;
-        current_ZhidaoYaoji[0]=qry.value(4).toInt();//sbé»‘è¯
-        current_ZhidaoYaoji[1]=qry.value(5).toInt();//sbç¡«é…¸é“œ
-        current_ZhidaoYaoji[2]=qry.value(6).toInt();//sbç¡é…¸é“…
-        current_ZhidaoYaoji[3]=qry.value(7).toInt();//sbé»„è¯
-        current_ZhidaoYaoji[4]=qry.value(8).toInt();//sbäºŒå·æ²¹
+        current_ZhidaoYaoji[0]=qry.value(4).toInt();//sbºÚÒ©
+        current_ZhidaoYaoji[1]=qry.value(5).toInt();//sbÁòËáÍ­
+        current_ZhidaoYaoji[2]=qry.value(6).toInt();//sbÏõËáÇ¦
+        current_ZhidaoYaoji[3]=qry.value(7).toInt();//sb»ÆÒ©
+        current_ZhidaoYaoji[4]=qry.value(8).toInt();//sb¶þºÅÓÍ
 
-        current_ZhidaoYaoji[5]=qry.value(9).toInt();//auçº¯ç¢±è€
-        current_ZhidaoYaoji[6]=qry.value(10).toInt();//auçº¯ç¢±æ–°
-        current_ZhidaoYaoji[7]=qry.value(11).toInt();//auç¡«é…¸é“œ
-        current_ZhidaoYaoji[8]=qry.value(12).toInt();//aué»„è¯
-        current_ZhidaoYaoji[9]=qry.value(13).toInt();//auäºŒå·æ²¹
-        current_ZhidaoYaoji[10]=qry.value(14).toInt();//auç¡«åŒ–é’ 
+        current_ZhidaoYaoji[5]=qry.value(9).toInt();//au´¿¼îÀÏ
+        current_ZhidaoYaoji[6]=qry.value(10).toInt();//au´¿¼îÐÂ
+        current_ZhidaoYaoji[7]=qry.value(11).toInt();//auÁòËáÍ­
+        current_ZhidaoYaoji[8]=qry.value(12).toInt();//au»ÆÒ©
+        current_ZhidaoYaoji[9]=qry.value(13).toInt();//au¶þºÅÓÍ
+        current_ZhidaoYaoji[10]=qry.value(14).toInt();//auÁò»¯ÄÆ
         setZhidaoYaoji(current_ZhidaoYaoji);
     }
 
@@ -267,38 +267,38 @@ void ImageValue::updatesqlyaoji()
         QList<int> current_YaojiList;
 
         current_YaojiList<<0<<0<<0<<0<<0<<0<<0<<0<<0<<0<<0<<0;//init, think of another way
-        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[è°ƒèŠ‚è¡¨] WHERE è¯å‰‚ç§ç±»='ç¢³é…¸é’ ' AND åŠ è¯ç‚¹='ç¢³é…¸é’ æ…æ‹Œæ¡¶' order by id desc ");//select last one
+        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[µ÷½Ú±í] WHERE Ò©¼ÁÖÖÀà='Ì¼ËáÄÆ' AND ¼ÓÒ©µã='Ì¼ËáÄÆ½Á°èÍ°' order by id desc ");//select last one
         qry.first();
         current_YaojiList[0]=qry.value(6).toInt();
-        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[è°ƒèŠ‚è¡¨] WHERE è¯å‰‚ç§ç±»='ç¢³é…¸é’ ' AND åŠ è¯ç‚¹='ç¢³é…¸çƒç£¨æ± ' order by id desc");
+        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[µ÷½Ú±í] WHERE Ò©¼ÁÖÖÀà='Ì¼ËáÄÆ' AND ¼ÓÒ©µã='Ì¼ËáÇòÄ¥³Ø' order by id desc");
         qry.first();
         current_YaojiList[1]=qry.value(6).toInt();
-        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[è°ƒèŠ‚è¡¨] WHERE è¯å‰‚ç§ç±»='ç¡«é…¸é“œ' AND åŠ è¯ç‚¹='ç¡«é…¸é“œæ…æ‹Œæ¡¶' order by id desc");
+        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[µ÷½Ú±í] WHERE Ò©¼ÁÖÖÀà='ÁòËáÍ­' AND ¼ÓÒ©µã='ÁòËáÍ­½Á°èÍ°' order by id desc");
         qry.first();
         current_YaojiList[2]=qry.value(6).toInt();
-        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[è°ƒèŠ‚è¡¨] WHERE è¯å‰‚ç§ç±»='é»„è¯' AND åŠ è¯ç‚¹='é»„è¯æ…æ‹Œæ¡¶' order by id desc");
+        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[µ÷½Ú±í] WHERE Ò©¼ÁÖÖÀà='»ÆÒ©' AND ¼ÓÒ©µã='»ÆÒ©½Á°èÍ°' order by id desc");
         qry.first();
         current_YaojiList[3]=qry.value(6).toInt();
-        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[è°ƒèŠ‚è¡¨] WHERE è¯å‰‚ç§ç±»='2#æ²¹' AND åŠ è¯ç‚¹='2#æ²¹æ…æ‹Œæ¡¶' order by id desc");
+        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[µ÷½Ú±í] WHERE Ò©¼ÁÖÖÀà='2#ÓÍ' AND ¼ÓÒ©µã='2#ÓÍ½Á°èÍ°' order by id desc");
         qry.first();
         current_YaojiList[4]=qry.value(6).toInt();
-        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[è°ƒèŠ‚è¡¨] WHERE è¯å‰‚ç§ç±»='ç¡«åŒ–é’ ' AND åŠ è¯ç‚¹='ç¡«åŒ–é’ ' order by id desc");
+        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[µ÷½Ú±í] WHERE Ò©¼ÁÖÖÀà='Áò»¯ÄÆ' AND ¼ÓÒ©µã='Áò»¯ÄÆ' order by id desc");
         qry.first();
         current_YaojiList[5]=qry.value(6).toInt();
 
-        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[è°ƒèŠ‚è¡¨] WHERE è¯å‰‚ç§ç±»='é»‘è¯' AND åŠ è¯ç‚¹='é»‘è¯' order by id desc");
+        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[µ÷½Ú±í] WHERE Ò©¼ÁÖÖÀà='ºÚÒ©' AND ¼ÓÒ©µã='ºÚÒ©' order by id desc");
         qry.first();
         current_YaojiList[6]=qry.value(6).toInt();
-        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[è°ƒèŠ‚è¡¨] WHERE è¯å‰‚ç§ç±»='ç¡«é…¸é“œ' AND åŠ è¯ç‚¹='ç¡«é…¸é“œé”‘ç²—é€‰' order by id desc");
+        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[µ÷½Ú±í] WHERE Ò©¼ÁÖÖÀà='ÁòËáÍ­' AND ¼ÓÒ©µã='ÁòËáÍ­Ìà´ÖÑ¡' order by id desc");
         qry.first();
         current_YaojiList[7]=qry.value(6).toInt();
-        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[è°ƒèŠ‚è¡¨] WHERE è¯å‰‚ç§ç±»='ç¡é…¸é“…' AND åŠ è¯ç‚¹='ç¡é…¸é“…é”‘ç²—é€‰' order by id desc");
+        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[µ÷½Ú±í] WHERE Ò©¼ÁÖÖÀà='ÏõËáÇ¦' AND ¼ÓÒ©µã='ÏõËáÇ¦Ìà´ÖÑ¡' order by id desc");
         qry.first();
         current_YaojiList[8]=qry.value(6).toInt();
-        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[è°ƒèŠ‚è¡¨] WHERE è¯å‰‚ç§ç±»='é»„è¯' AND åŠ è¯ç‚¹='é»„è¯é”‘ç²—é€‰' order by id desc");
+        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[µ÷½Ú±í] WHERE Ò©¼ÁÖÖÀà='»ÆÒ©' AND ¼ÓÒ©µã='»ÆÒ©Ìà´ÖÑ¡' order by id desc");
         qry.first();
         current_YaojiList[9]=qry.value(6).toInt();
-        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[è°ƒèŠ‚è¡¨] WHERE è¯å‰‚ç§ç±»='2#æ²¹' AND åŠ è¯ç‚¹='2#æ²¹é”‘ç²—é€‰' order by id desc");
+        qry.exec("SELECT Top 1 * FROM [YaoJiDBF].[dbo].[µ÷½Ú±í] WHERE Ò©¼ÁÖÖÀà='2#ÓÍ' AND ¼ÓÒ©µã='2#ÓÍÌà´ÖÑ¡' order by id desc");
         qry.first();
         current_YaojiList[10]=qry.value(6).toInt();
 
@@ -314,8 +314,8 @@ void ImageValue::updatesqlyaoji()
 
 void ImageValue::getAuImageValue(void)
 {
-    Histogram h;//åˆ›å»ºå›¾åƒå¢žå¼ºç®—æ³•å®žä¾‹;
-    WatershedAlgorithm myWatershed;	// åˆ›å»ºåˆ†æ°´å²­ç®—æ³•å®žä¾‹;
+    Histogram h;//´´½¨Í¼ÏñÔöÇ¿Ëã·¨ÊµÀý;
+    WatershedAlgorithm myWatershed;	// ´´½¨·ÖË®ÁëËã·¨ÊµÀý;
     AuCamera aucamerazz;
     int nr=aucamerazz.getauimageheight();
     int nc=aucamerazz.getauimagewidth();
@@ -363,7 +363,7 @@ void ImageValue::getAuImageValue(void)
 
     auWSS=myWatershed.run(auopencvimage_not);//return WSS as the result of watershed;
    // imshow("wtershed result1",WSS);
-//    imshow("wtershed result2",WSS+opencvimage_gray);//æ˜¾ç¤ºåˆ†å‰²æ•ˆæžœ
+//    imshow("wtershed result2",WSS+opencvimage_gray);//ÏÔÊ¾·Ö¸îÐ§¹û
 
 
 
