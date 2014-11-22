@@ -23,7 +23,7 @@ public:
 
     Q_INVOKABLE void startaucamera();
     Q_INVOKABLE void updateaucamera();
-    Q_INVOKABLE  void getauimage();
+//    Q_INVOKABLE  void getauimage();
 
 
    void paint(QPainter *painter);

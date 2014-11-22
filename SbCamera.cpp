@@ -76,10 +76,10 @@ void SbCamera::startsbcamera(void)
     sbcameraframe=QImage(sbimagewidth,sbimageheight,QImage::Format_RGB888);
 }
 
-void SbCamera::getsbimage(void)
-{
-    UCC_GetBitmapImage(sbCamIds[1],UINT8P_CAST(sbcameraframe.bits()),10);
-}
+//void SbCamera::getsbimage(void)
+//{
+//    UCC_GetBitmapImage(sbCamIds[1],UINT8P_CAST(sbcameraframe.bits()),10);
+//}
 
 void SbCamera::updatesbcamera(void)
 {
@@ -89,9 +89,12 @@ void SbCamera::updatesbcamera(void)
 
 void SbCamera::paint(QPainter *painter)
 {
-
+    cv::Mat mSbimage(1088, 1388,CV_8UC3);
+    UCC_GetBitmapImage(sbCamIds[0],UINT8P_CAST(mSbimage.data),10);
+    cv::cvtColor(mSbimage,mSbimage,CV_BGR2RGB);
+    sbcameraframe= QImage((const unsigned char*)mSbimage.data,mSbimage.cols,mSbimage.rows,QImage::Format_RGB888);
     painter->drawImage(boundingRect().adjusted(1, 1, -1, -1),sbcameraframe);
-}
+ }
 
 quint32 SbCamera::getSbCameraID(void) const
 {

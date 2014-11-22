@@ -74,10 +74,10 @@ void AuCamera::startaucamera(void)
     aucameraframe=QImage(auimagewidth,auimageheight,QImage::Format_RGB888);//注意颜色rgb-bgr
 }
 
-void AuCamera::getauimage(void)
-{
-    UCC_GetBitmapImage(auCamIds[0],UINT8P_CAST(aucameraframe.bits()),10);
-}
+//void AuCamera::getauimage(void)
+//{
+//    UCC_GetBitmapImage(auCamIds[0],UINT8P_CAST(aucameraframe.bits()),10);
+//}
 
 
 void AuCamera::updateaucamera(void)
@@ -89,6 +89,10 @@ void AuCamera::updateaucamera(void)
 
 void AuCamera::paint(QPainter *painter)
 {
+    cv::Mat mAuimage(1088, 1388,CV_8UC3);
+    UCC_GetBitmapImage(auCamIds[0],UINT8P_CAST(mAuimage.data),10);
+    cv::cvtColor(mAuimage,mAuimage,CV_BGR2RGB);
+    aucameraframe= QImage((const unsigned char*)mAuimage.data,mAuimage.cols,mAuimage.rows,QImage::Format_RGB888);
     painter->drawImage(boundingRect().adjusted(1, 1, -1, -1),aucameraframe);
 }
 

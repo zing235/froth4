@@ -20,11 +20,11 @@ Rectangle
 
             Timer{
                 id: aucameratimer
-                interval: 1
+                interval: 10
                 repeat: true
                 onTriggered: {
                     autime.text = Date().toString()
-                    aucamera.getauimage()
+//                    aucamera.getauimage()
                     aucamera.updateaucamera()
                 }
             }

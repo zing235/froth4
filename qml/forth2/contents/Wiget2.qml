@@ -49,11 +49,11 @@ import SbCamera 1.0
 //                       renderTarget: FramebufferObject
                         Timer{
                             id: exaucameratimer
-                            interval: 1
+                            interval: 10
                             repeat: true
                             onTriggered: {
                                 exautime.text = Date().toString()
-                                exaucamera.getauimage()
+//                                exaucamera.getauimage()
                                 exaucamera.updateaucamera()
                             }
                         }
@@ -147,11 +147,11 @@ import SbCamera 1.0
 //                       renderTarget: FramebufferObject
                         Timer{
                             id: exsbameratimer
-                            interval: 1
+                            interval: 10
                             repeat: true
                             onTriggered: {
                                 exsbtime.text = Date().toString()
-                                exsbcamera.getsbimage()
+//                                exsbcamera.getsbimage()
                                 exsbcamera.updatesbcamera()
                             }
                         }

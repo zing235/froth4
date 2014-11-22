@@ -62,7 +62,7 @@ public:
 
     Q_INVOKABLE void startsbcamera();
     Q_INVOKABLE void updatesbcamera();
-    Q_INVOKABLE  void getsbimage();
+//    Q_INVOKABLE  void getsbimage();
 
 
 

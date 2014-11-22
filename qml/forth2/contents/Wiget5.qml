@@ -20,11 +20,11 @@ Rectangle
 //                        renderTarget: FramebufferObject
             Timer{
                 id: sbcameratimer
-                interval: 1
+                interval: 10
                 repeat: true
                 onTriggered: {
                     sbtime.text = Date().toString()
-                    sbcamera.getsbimage()
+//                    sbcamera.getsbimage()
                     sbcamera.updatesbcamera()
                 }
             }
